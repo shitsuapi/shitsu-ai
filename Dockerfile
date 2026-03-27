@@ -1,7 +1,7 @@
 FROM node:18-slim
 
 RUN apt-get update && \
-  apt-get install -y ffmpeg imagemagick webp && \
+  apt-get install -y ffmpeg imagemagick webp git && \
   rm -rf /var/lib/apt/lists/*
 
 WORKDIR /usr/src/app
@@ -14,4 +14,4 @@ COPY . .
 
 EXPOSE 8000
 
-CMD ["npm", "start"]
+CMD ["pm2-runtime", "index.js"]
